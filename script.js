@@ -2,13 +2,13 @@
 const display = document.querySelector(".display");
 display.textContent = '';
 let final = 0, initial = 0, opera = "",result=0;
-
+const dot=document.querySelector("#dot");
 function potulate(value) { //Function to display the result or number
     display.textContent = value;
 }
 function operate(a1, b1, operator) { //function to do mathematical operation
-    let a = parseInt(a1);
-    let b = parseInt(b1);
+    let a = parseFloat(a1);
+    let b = parseFloat(b1);
     switch (operator) {
         case '+': return a + b;
         case '-': return a - b;
@@ -29,15 +29,15 @@ const numbers = document.querySelectorAll(".numbers");
 numbers.forEach((number) => {    //looping through each number and adding event listener and displaying when pressed
     number.addEventListener("click", () => {
 
-        if (opera != "" && opera != "+/-"&&opera!=".") {
-            if (final === 0) { display.textContent = ""; }
+        if (opera != "" && opera != "+/-") {
+            if (final == 0) { display.textContent = ""; }
             final = display.textContent + number.textContent;
             console.log(final)
             potulate(final);
         }
 
-        if (final === 0) {
-            if(initial===0)
+        if (final == 0) {
+            if(initial==0)
             display.textContent="";
             initial = display.textContent + number.textContent;
             console.log(initial)
@@ -45,7 +45,29 @@ numbers.forEach((number) => {    //looping through each number and adding event 
         }
     })
 })
+dot.addEventListener("click", () => {
 
+    if (opera != "" && opera != "+/-") {
+        if (final ==0) { display.textContent = ""; }
+        if(typeof final === 'string' && !final.includes("."))
+       { final +=".";
+     display.textContent=final;}
+      
+        console.log(final);
+        potulate(final);
+    }
+
+    if (final == 0) {
+        if(initial==0)
+        display.textContent="";
+        if(typeof initial === 'string' && !initial.includes("."))
+        { initial+="."
+       display.textContent=initial}
+       
+        console.log(initial)
+        potulate(initial);
+    }
+})
 const operators = document.querySelectorAll(".operator"); 
 operators.forEach((operator) => {             //looping through every operator and adding event listener and choosing the operator when pressed
     operator.addEventListener("click", () => {
@@ -69,12 +91,20 @@ equal.addEventListener("click", ()=>{  // action when equals button is clicked
     
     final=0;
     initial = result;
-    potulate(Math.round(result));
-    if(result===Infinity||result==NaN){
+    if (typeof result === 'number') {
+        if (Number.isInteger(result)) {
+            result = result.toFixed(0);
+        } else {
+            result = result.toFixed(2);
+        }
+    }
+    potulate(result);
+    if(result===Infinity||isNaN(result)){
         result=0;
         initial=0;
         opera="";
     }
 }});
+
 
 

@@ -3,6 +3,7 @@ body{
     justify-content: center;
     align-items: center;
     height: 98vh;
+    background-color: aquamarine;
 }
 .calculator{
     height:700px ;
@@ -44,10 +45,29 @@ justify-content: end;
     border-radius: 5px;
     font-size: 25px;
 }
-.butt:hover{
-    background-color: rgb(223, 219, 219);
-}
+
 #zero{
     width: 283px;
+    background-color:yellow;
 }
-
+.numbers{
+    background-color: yellow;
+}
+.operator{
+    background-color: rgb(16, 197, 16);
+}
+#AC{
+    background-color: red;
+}
+#dot{
+    background-color: aqua;
+}
+#equal{
+    background-color:brown;
+}
+#negative{
+    background-color: chartreuse;
+}
+.butt:hover,#AC:hover,#dot:hover,#equal:hover,#negative:hover,#zero:hover{
+    background-color: bisque;
+}
