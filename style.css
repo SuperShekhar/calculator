@@ -24,9 +24,13 @@ body{
 background-color: rgba(214, 206, 206, 0.979);
 height: 120px;
 margin: 8px 2px;
+font-size: 90px;
+padding:12px;
+padding-bottom: 0px;
 display: flex;
-justify-content:flex-end;
-padding:0px 14px;
+overflow: hidden;
+justify-content: end;
+
 }
 .buttons{
     display:flex;
@@ -39,6 +43,9 @@ padding:0px 14px;
     width:140px;
     border-radius: 5px;
     font-size: 25px;
+}
+.butt:hover{
+    background-color: rgb(223, 219, 219);
 }
 #zero{
     width: 283px;
