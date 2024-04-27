@@ -3,6 +3,7 @@ const display = document.querySelector(".display");
 display.textContent = '';
 let final = 0, initial = 0, opera = "",result=0;
 const dot=document.querySelector("#dot");
+const negative=document.querySelector("#negative")
 function potulate(value) { //Function to display the result or number
     display.textContent = value;
 }
@@ -28,14 +29,14 @@ ac.addEventListener("click", () => {  //action when AC button is pressed
 const numbers = document.querySelectorAll(".numbers");
 numbers.forEach((number) => {    //looping through each number and adding event listener and displaying when pressed
     number.addEventListener("click", () => {
-
+    
         if (opera != "" && opera != "+/-") {
             if (final == 0) { display.textContent = ""; }
             final = display.textContent + number.textContent;
             console.log(final)
             potulate(final);
         }
-
+        
         if (final == 0) {
             if(initial==0)
             display.textContent="";
@@ -46,7 +47,7 @@ numbers.forEach((number) => {    //looping through each number and adding event 
     })
 })
 dot.addEventListener("click", () => {
-
+    
     if (opera != "" && opera != "+/-") {
         if (final ==0) { display.textContent = ""; }
         if(typeof final === 'string' && !final.includes("."))
@@ -65,6 +66,29 @@ dot.addEventListener("click", () => {
        display.textContent=initial}
        
         console.log(initial)
+        potulate(initial);
+    }
+})
+negative.addEventListener("click", () => {
+    
+    if (opera != "" && opera != "+/-") {
+        if (final ==0) { display.textContent = ""; }
+        if(typeof final === 'string' && !final.includes("-"))
+       { final ="-"+final;
+     display.textContent=final;}
+      
+        console.log(final);
+        potulate(final);
+    }
+
+    if (final == 0) {
+        if(initial==0)
+        display.textContent="";
+        if(typeof initial === 'string' && !initial.includes("-"))
+        { initial="-"+ initial;
+       display.textContent=initial}
+       
+        console.log(initial);
         potulate(initial);
     }
 })
